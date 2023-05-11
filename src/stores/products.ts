@@ -9,7 +9,7 @@ export const useProductsStore = defineStore('products', () => {
 
   const products = ref<Array<IProduct>>([])
 
-  const fetchProducts = async (limit = 10, skip = 0) => {
+  const fetchProducts = async (limit = 12, skip = 0) => {
     isLoading.value = true
 
     try {

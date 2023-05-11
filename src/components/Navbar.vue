@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-slate-500 mb-6">
+  <nav class="absolute w-full bg-slate-500">
     <div class="container mx-auto p-4 max-w-[1440px]">
       <div class="flex items-center justify-between">
         <RouterLink :to="{ path: '/', name: 'home' }" class="font-semibold text-xl">

@@ -1,7 +1,7 @@
 <template>
   <Navbar />
 
-  <div class="container max-w-[1440px] mx-auto px-4">
+  <div class="container max-w-[1440px] mx-auto px-4 pt-[80px]">
     <RouterView />
   </div>
 </template>
