@@ -1,18 +1,34 @@
 <template>
-  <div class="flex justify-center items-center flex-col h-full">
-    <p class="mb-2">There is nothing to show you at the moment.</p>
-    <p>
-      Please go to the
-      <RouterLink :to="{ path: '/products', name: 'products' }" class="text-cyan-500">
-        Products
+  <div class="products">
+    <p class="text-3xl mb-4">Products</p>
+
+    <AppCarousel :items="slicedProducts" class="mb-8">
+      <template #item="item">
+        <Product :product="item" class="h-full" />
+      </template>
+    </AppCarousel>
+
+    <div class="text-right">
+      <RouterLink :to="{ path: '/products', name: 'products' }">
+        <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-full">Show more</span>
       </RouterLink>
-      page.
-    </p>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
-</script>
+import { storeToRefs } from 'pinia'
+import { useProductsStore } from '../stores/products'
+import AppCarousel from '../components/AppCarousel.vue'
+import Product from '../components/Product.vue'
 
-<style lang="scss" scoped></style>
+const store = useProductsStore()
+const { fetchProducts } = useProductsStore()
+const { products } = storeToRefs(store)
+
+const slicedProducts = computed(() => products.value.slice(0, 8))
+
+onMounted(() => fetchProducts())
+</script>
