@@ -1,6 +1,7 @@
 <template>
   <div
-    class="flex flex-col justify-between border border-cyan-700 max-w-sm rounded overflow-hidden shadow-cyan-700 shadow-md hover:shadow-cyan-700 hover:shadow-lg hover:transition-all"
+    class="flex flex-col justify-between border border-cyan-700 max-w-sm rounded overflow-hidden shadow-cyan-700 shadow-md hover:shadow-cyan-700 hover:shadow-lg hover:transition-all cursor-pointer"
+    @click="showProductInfo(product.id)"
   >
     <div>
       <img
@@ -26,9 +27,14 @@
 </template>
 
 <script setup lang="ts">
-import { type IProduct } from '../models/products.model'
+import { useRouter } from 'vue-router'
+import { type IProduct } from '../../models/products.model'
 
 defineProps<{
   product: IProduct
 }>()
+
+const router = useRouter()
+
+const showProductInfo = (id: number) => router.push({ name: 'product', params: { id } })
 </script>

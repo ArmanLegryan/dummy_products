@@ -4,7 +4,7 @@
 
     <AppCarousel :items="slicedProducts" class="mb-8">
       <template #item="item">
-        <Product :product="item" class="h-full" />
+        <ProductCard :product="item" class="h-full" />
       </template>
     </AppCarousel>
 
@@ -22,7 +22,7 @@ import { RouterLink } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useProductsStore } from '../stores/products'
 import AppCarousel from '../components/AppCarousel.vue'
-import Product from '../components/Product.vue'
+import ProductCard from '../components/products/ProductCard.vue'
 
 const store = useProductsStore()
 const { fetchProducts } = useProductsStore()
