@@ -10,17 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useProductsStore } from '../../stores/products'
-import { onMounted } from 'vue'
+import { useProducts } from '../../composables/useProducts'
 import ProductCard from '../../components/products/ProductCard.vue'
 import AppLoader from '../../components/AppLoader.vue'
 
-const store = useProductsStore()
-const { fetchProducts } = useProductsStore()
-const { isLoading, products } = storeToRefs(store)
-
-onMounted(() => fetchProducts())
+const { products, isLoading } = useProducts()
 </script>
 
 <style lang="scss" scoped></style>

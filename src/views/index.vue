@@ -17,18 +17,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
-import { storeToRefs } from 'pinia'
-import { useProductsStore } from '../stores/products'
+import { useProducts } from '../composables/useProducts'
 import AppCarousel from '../components/AppCarousel.vue'
 import ProductCard from '../components/products/ProductCard.vue'
 
-const store = useProductsStore()
-const { fetchProducts } = useProductsStore()
-const { products } = storeToRefs(store)
-
-const slicedProducts = computed(() => products.value.slice(0, 8))
-
-onMounted(() => fetchProducts())
+const { slicedProducts } = useProducts()
 </script>
